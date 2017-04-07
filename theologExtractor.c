@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 3)
     {
-        puts("Usage: theologExtractor <path to lectureN.tex> <output path>");
+        puts("Usage: theologExtractor <path/to/lectureN.tex> <path/to/output.file>");
         exit(EXIT_FAILURE);
     }
 
