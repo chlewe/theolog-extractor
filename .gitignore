@@ -1,0 +1,8 @@
+# Ignore everything
+/*
+
+# Un-ignore some files
+!/Makefile
+!/README.md
+!/.gitignore
+!/*.c
