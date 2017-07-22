@@ -4,8 +4,7 @@
 
 struct pattern
 {
-    size_t len;
-    size_t index;
+    size_t currIndex;
     char *str;
     void (*func)(void);
 };
@@ -15,7 +14,8 @@ void copyBoxContent(void);
 
 struct pattern patterns[] =
 {
-    {5, 0, "defbox", copyBoxContent}, {6, 0, "theobox", copyBoxContent}
+    {0, "defbox", copyBoxContent},
+    {0, "theobox", copyBoxContent}
 };
 
 char const separator[] = "\n\n\n";
@@ -51,22 +51,22 @@ int main(int argc, char *argv[])
 
 void checkPattern(int ch, struct pattern *pattern)
 {
-    if (ch == pattern->str[pattern->index])
+    if (ch == pattern->str[pattern->currIndex])
     {
-        if (pattern->index == pattern->len)
+        if (pattern->currIndex == strlen(pattern->str) - 1)
         {
             fprintf(output, "\\%s", pattern->str);
             pattern->func();
-            pattern->index = 0;
+            pattern->currIndex = 0;
         }
         else
         {
-            pattern->index++;
+            pattern->currIndex++;
         }
     }
     else
     {
-        pattern->index = 0;
+        pattern->currIndex = 0;
     }
 }
 
